@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Summit United Club Payment Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+ :root{--bg:#f4f6f8;--surface:#fff;--text:#16202a;--muted:#5b6570;--border:#dde1e6;--th-bg:#eef1f5;--th-text:#16202a;
+  --accent:#334155;--accent2:#334155;--on-accent:#fff;--link:#1d4ed8;--bad:#b42318;--ok:#067647;--warn:#b54708;
+  --header-bg:#fff;--header-text:#16202a;--font-head:system-ui,sans-serif;--font-body:system-ui,sans-serif;--head-weight:700;--head-spacing:0}
+ *{box-sizing:border-box}
+ body{font:16px/1.5 var(--font-body);margin:0;background:var(--bg);color:var(--text)}
+ header{background:var(--header-bg);color:var(--header-text);border-bottom:4px solid var(--accent)}
+ .wrap{max-width:860px;margin:0 auto;padding:0 16px}
+ .hd{display:flex;align-items:center;gap:14px;padding:14px 16px}
+ .logos img{height:52px;width:auto;max-width:120px;object-fit:contain}
+ #brandName{font:var(--head-weight) 26px/1.1 var(--font-head);letter-spacing:var(--head-spacing)} header h1{margin:0}
+ #brandTag{color:var(--muted);font-size:14px}
+ main{padding:20px 16px 60px}
+ .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin:0 0 16px}
+ h2{font:var(--head-weight) 22px/1.2 var(--font-head);letter-spacing:var(--head-spacing);margin:0 0 4px}
+ h3{font:600 15px/1.3 var(--font-body);margin:18px 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+ label{display:block;font-weight:600;margin:12px 0 4px}
+ input[type=email],input[type=text],input[type=tel]{width:100%;height:44px;padding:0 12px;border:1px solid var(--border);border-radius:8px;font:inherit;background:var(--bg);color:var(--text)}
+ button{height:44px;padding:0 18px;border:0;border-radius:8px;font:600 16px var(--font-body);cursor:pointer;background:var(--accent);color:var(--on-accent)}
+ button.alt{background:transparent;color:var(--link);border:1px solid var(--border)}
+ button:disabled{opacity:.55;cursor:default}
+ .muted{color:var(--muted);font-size:14px}
+ .err{color:var(--bad);margin:10px 0 0;min-height:1.2em}
+ .banner{padding:12px 14px;border-radius:10px;margin:0 0 16px;border:1px solid var(--border);background:var(--surface)}
+ .banner.ok{border-color:var(--ok)} .banner.warn{border-color:var(--warn)}
+ .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+ .badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:700;border:1px solid currentColor}
+ .b-due{color:var(--bad)} .b-ok{color:var(--ok)} .b-warn{color:var(--warn)}
+ .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+ .stat{background:var(--bg);border-radius:8px;padding:10px 12px}
+ .stat b{display:block;font-size:20px}
+ .stat span{font-size:13px;color:var(--muted)}
+ table{width:100%;border-collapse:collapse;font-size:15px}
+ th{background:var(--th-bg);color:var(--th-text);text-align:left;font-size:13px;padding:6px 8px}
+ td{padding:6px 8px;border-top:1px solid var(--border)}
+ td.n,th.n{text-align:right}
+ .actions{margin:14px 0 4px;padding:14px;border:1px solid var(--border);border-radius:10px}
+ .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+ .opt{display:flex;align-items:center;gap:8px;margin:6px 0;font-weight:500}
+ .opt input{width:18px;height:18px}
+ details{margin-top:10px} summary{cursor:pointer;color:var(--link);font-weight:600}
+ [hidden]{display:none!important}
+ .logos{display:flex;gap:10px;align-items:center}
+ .home{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start;padding-top:8px}
+ .hero .big{font:var(--head-weight) 40px/1.08 var(--font-head);letter-spacing:var(--head-spacing);margin:18px 0 12px}
+ .lede{font-size:18px;color:var(--muted);margin:0 0 18px;max-width:34em}
+ .pills{display:flex;gap:8px;flex-wrap:wrap}
+ .pill{height:34px;padding:0 14px;border-radius:999px;background:transparent;color:var(--text);border:1px solid var(--border);font-size:14px}
+ .pill.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+ .feat{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ .feat li{display:grid;gap:2px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px}
+ .feat span{color:var(--muted);font-size:15px}
+ .signin{margin:0;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+ @media(max-width:760px){.home{grid-template-columns:1fr}.hero .big{font-size:32px}}
+ @media(max-width:560px){.stats{grid-template-columns:1fr 1fr}#brandName{font-size:18px}  .logos img{height:40px}}
+</style>
+</head>
+<body>
+<header><div class="wrap hd"><span class="logos"><img id="logo" alt="" hidden><img id="logo2" alt="" hidden></span><div><h1><a href="./" id="homeLink" style="color:inherit;text-decoration:none"><span id="brandName">Summit United Club Payment Portal</span></a></h1><div id="brandTag"></div></div></div></header>
+<main class="wrap">
+  <section id="login" class="home">
+  <div class="hero">
+   <div class="pills" role="group" aria-label="Choose your club">
+    <button type="button" class="pill" data-org="summit">Summit Fastpitch</button>
+    <button type="button" class="pill" data-org="voltage">Voltage Baseball</button>
+   </div>
+   <h2 class="big">Check your balance.<br>Make a payment.</h2>
+   <p class="lede">Look up your player's account, see what's paid and what's due, and pay or set up monthly payments in a couple of minutes.</p>
+   <ul class="feat">
+    <li><b>See where you stand</b><span>What's paid, what's due, and the full payment schedule.</span></li>
+    <li><b>Pay what you choose</b><span>Any amount, by bank account or card, on Stripe's secure page.</span></li>
+    <li><b>Spread it out</b><span>Pick a start day and set up monthly payments that stop on their own.</span></li>
+   </ul>
+  </div>
+  <div class="card signin">
+   <h2>Look up your account</h2>
+   <p class="muted">Use an email address and phone number from your registration, plus your player's birth date.</p>
+   <p class="muted" id="loginNote" hidden>Sign in to see your updated account.</p>
+   <div id="resume" class="banner" hidden><div class="muted" id="resumeWho"></div><div class="row"><button type="button" id="resumeGo">Open my account</button><button type="button" class="alt" id="resumeOut">Not you? Sign out</button></div></div>
+   <form id="f" autocomplete="off">
+    <label for="email">Email address</label>
+    <input id="email" type="email" inputmode="email" autocapitalize="off" placeholder="you@example.com" required>
+    <label for="last4">Last 4 digits of your phone number</label>
+    <input id="last4" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="1234" required>
+    <label for="dob">Player's birth date <span class="muted" style="font-weight:400">(any player on your account)</span></label>
+    <input id="dob" type="date" required min="2000-01-01" max="2030-12-31" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--border);border-radius:8px;font:inherit;background:var(--bg);color:var(--text)">
+    <div class="row"><button id="go" style="width:100%">Look up my account</button></div>
+    <div id="loginErr" class="err" role="alert"></div>
+   </form>
+   <p class="muted" style="margin:14px 0 0;font-size:13px">Questions? Contact your team manager. Payments are processed securely by Stripe.</p>
+  </div>
+ </section>
+
+ <section id="acct" hidden>
+  <div id="msg"></div>
+  <div class="top" style="margin-bottom:12px"><div class="muted" id="who"></div><button class="alt" id="out">Sign out</button></div>
+  <div id="players"></div>
+  <p class="muted" id="foot"></p>
+ </section>
+</main>
+<script src="brand.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const $$ = (n) => "$" + (Math.round(n * 100) / 100).toLocaleString("en-US", { minimumFractionDigits: Math.round(n * 100) % 100 ? 2 : 0 });
+const dateFmt = (iso) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+const monthFmt = (iso) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
+const ORG = { summit: "Summit Fastpitch", voltage: "Voltage Baseball" };
+
+function applyBrand(key) {
+  const k = BRANDS[key] ? key : "all", b = BRANDS[k];
+  document.documentElement.dataset.org = k;
+  for (const [n, v] of Object.entries(b.vars)) document.documentElement.style.setProperty("--" + n, v);
+  $("#brandName").textContent = k === "all" ? "Summit United Club Payment Portal" : b.name;
+  $("#brandTag").textContent = k === "all" ? "Summit Fastpitch · Voltage Baseball Club" : "Club Payment Portal";
+  document.title = k === "all" ? "Summit United Club Payment Portal" : b.name + " | Club Payment Portal";
+  const logos = k === "all" ? [BRANDS.summit.logo, BRANDS.voltage.logo] : [b.logo];
+  [$("#logo"), $("#logo2")].forEach((img, i) => {
+    img.onerror = () => { img.hidden = true; };
+    if (logos[i]) { img.src = logos[i]; img.hidden = false; } else { img.hidden = true; img.removeAttribute("src"); }
+  });
+  document.querySelectorAll(".pill").forEach((x) => x.classList.toggle("on", x.dataset.org === k));
+}
+document.querySelectorAll(".pill").forEach((x) => x.addEventListener("click", () => applyBrand(x.classList.contains("on") ? "all" : x.dataset.org))); // click again to clear
+const wanted = new URLSearchParams(location.search).get("org");
+applyBrand(wanted);
+
+// Credentials live only in this variable (never in storage or the URL) and are re-sent with every request.
+let CRED = null, DATA = null;
+async function api(path, body) {
+  const r = await fetch(path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  let j = {}; try { j = await r.json(); } catch {}
+  if (!r.ok) throw new Error(j.error || "Something went wrong. Please try again.");
+  return j;
+}
+
+const status = new URLSearchParams(location.search).get("status");
+let PENDING = ""; // shown once, on the first account view after returning from Stripe
+const NOTE = {
+  thanks: ["ok", "Thank you! Your payment went through to our payment processor. Card payments show here within a minute or two. Bank payments can take 4-5 business days to clear, and will show as processing until then."],
+  plan: ["ok", "Your monthly payments are set up. Thank you! Anything due today shows here shortly; bank payments can take 4-5 business days to clear."],
+  card: ["ok", "Thanks! If you saved changes, your payment method has been updated for the monthly payments."],
+  canceled: ["warn", "Checkout was canceled. Nothing was charged."],
+};
+if (NOTE[status]) {
+  $("#loginNote").hidden = false; // the full message appears on the account page once signed in
+  PENDING = `<div class="banner ${NOTE[status][0]}" style="display:flex;gap:10px;justify-content:space-between;align-items:flex-start"><span>${esc(NOTE[status][1])}</span><button class="alt" type="button" aria-label="Dismiss" style="height:28px;padding:0 10px" onclick="this.closest('.banner').remove()">&times;</button></div>`;
+  history.replaceState(null, "", location.pathname + (wanted ? "?org=" + encodeURIComponent(wanted) : ""));
+}
+
+// Credentials are kept for this browser tab only (sessionStorage, 30 minutes) so coming back from Stripe doesn't mean
+// signing in again. Closing the tab or pressing Sign out clears them.
+const KEEP = "fp-session", KEEP_MS = 30 * 60 * 1000;
+const keep = (c) => { try { c ? sessionStorage.setItem(KEEP, JSON.stringify({ c, t: Date.now() })) : sessionStorage.removeItem(KEEP); } catch {} };
+const kept = () => { try { const v = JSON.parse(sessionStorage.getItem(KEEP) || "null"); return v && Date.now() - v.t < KEEP_MS ? v.c : null; } catch { return null; } };
+
+async function signIn(cred, quiet) {
+  $("#loginErr").textContent = "";
+  $("#go").disabled = true; $("#go").textContent = "Looking...";
+  CRED = cred;
+  try { DATA = await api("/api/account", CRED); keep(CRED); show(); }
+  catch (err) { CRED = null; keep(null); if (!quiet) $("#loginErr").textContent = err.message; }
+  finally { $("#go").disabled = false; $("#go").textContent = "Look up my account"; }
+}
+$("#f").addEventListener("submit", (e) => { e.preventDefault(); signIn({ email: $("#email").value.trim(), last4: $("#last4").value.trim(), dob: $("#dob").value }); });
+// Plain visits show the home page (with a one-click "Open my account" if this tab is still signed in); coming back
+// from Stripe signs in automatically.
+const saved = kept();
+if (saved && status) signIn(saved, true);
+function showHome() {
+  $("#acct").hidden = true; $("#login").hidden = false;
+  const c = CRED || kept();
+  $("#resume").hidden = !c;
+  if (c) $("#resumeWho").textContent = "You're signed in as " + c.email + ".";
+}
+if (saved && !status) { CRED = saved; showHome(); }
+$("#resumeGo").addEventListener("click", () => signIn(CRED || kept()));
+$("#resumeOut").addEventListener("click", () => { keep(null); CRED = DATA = null; $("#resume").hidden = true; $("#players").innerHTML = ""; $("#msg").innerHTML = ""; applyBrand(wanted); });
+$("#homeLink").addEventListener("click", (e) => { e.preventDefault(); applyBrand(wanted); showHome(); });
+window.addEventListener("popstate", (e) => { if (e.state && e.state.v === "acct" && DATA) { $("#login").hidden = true; $("#acct").hidden = false; } else showHome(); });
+// Back/forward from Stripe can restore this page from the browser's cache; refresh the numbers when that happens.
+window.addEventListener("pageshow", (e) => { if (e.persisted && CRED) signIn(CRED, true); });
+$("#out").addEventListener("click", () => { keep(null); $("#msg").innerHTML = ""; CRED = DATA = null; $("#acct").hidden = true; $("#login").hidden = false; $("#email").value = $("#last4").value = $("#dob").value = ""; $("#players").innerHTML = ""; applyBrand(wanted); });
+
+function badge(p) {
+  if (p.free) return `<span class="badge b-ok">No fee</span>`;
+  if (p.status === "Paid in full") return `<span class="badge b-ok">Paid in full</span>`;
+  if (p.status === "Behind") return `<span class="badge b-due">Payment due</span>`;
+  if (/^Grace/.test(p.this_month)) return `<span class="badge b-warn">Installment due</span>`;
+  return `<span class="badge b-ok">Up to date</span>`;
+}
+
+function show() {
+  $("#login").hidden = true; $("#acct").hidden = false;
+  $("#msg").innerHTML = PENDING; PENDING = "";
+  if (!(history.state && history.state.v === "acct")) history.pushState({ v: "acct" }, "");
+  const orgs = [...new Set(DATA.players.map((p) => p.org))];
+  applyBrand(orgs.length === 1 ? orgs[0] : wanted);
+  $("#who").textContent = "Signed in as " + DATA.email;
+  $("#players").innerHTML = DATA.players.length ? "" : `<div class="card">We found your account but no registered players on it yet. Please contact your team manager.</div>`;
+  DATA.players.forEach((p, i) => $("#players").appendChild(card(p, i)));
+  $("#foot").textContent = DATA.unlinked ? "Some payments on your account aren't linked to a player yet. Please contact your team manager so we can match them." : "Don't see a payment you made? Bank payments can take a few days. Otherwise, contact your team manager.";
+}
+
+function card(p, i) {
+  const el = document.createElement("div"); el.className = "card";
+  const sched = p.schedule.length ? `<h3>Payment schedule</h3><table><thead><tr><th>Item</th><th>Due</th><th class="n">Amount</th><th>Status</th></tr></thead><tbody>${
+    p.schedule.map((s) => `<tr><td>${esc(s.item)}</td><td>${s.due ? esc(dateFmt(s.due)) : ""}</td><td class="n">${$$(s.amount)}</td><td>${esc(s.status === "MISSING" ? "Not yet paid" : s.status)}</td></tr>`).join("")}</tbody></table>` : "";
+  const hist = p.history.length ? `<h3>Payments received</h3><table><thead><tr><th>Date</th><th>For</th><th class="n">Amount</th></tr></thead><tbody>${
+    p.history.map((h) => `<tr><td>${esc(dateFmt(h.date))}</td><td>${esc(h.kind)}${h.refunded ? ` (${$$(h.refunded)} refunded)` : ""}</td><td class="n">${$$(h.amount)}</td></tr>`).join("")}</tbody></table>` : `<h3>Payments received</h3><p class="muted">No payments yet.</p>`;
+  el.innerHTML = `
+   <div class="top"><div><h2>${esc(p.player)}</h2><div class="muted">${esc(ORG[p.org] || p.org)} · ${esc(p.team)}</div></div>${badge(p)}</div>
+   ${p.free ? "" : `<div class="stats"><div class="stat"><b>${$$(p.paid)}</b><span>Paid so far</span></div><div class="stat"><b>${$$(p.remaining)}</b><span>Left on the season</span></div><div class="stat"><b>${$$(p.plan_total)}</b><span>Season total</span></div></div>`}
+   ${p.this_month ? `<p class="muted">This month: ${esc(p.this_month.replace(/\d{4}-\d{2}-\d{2}/g, dateFmt))}</p>` : ""}
+   ${p.pending ? `<div class="banner warn">You have ${$$(p.pending)} in bank payments still processing. Please wait for them to clear before paying again.</div>` : ""}
+   ${p.subscription ? `<div class="actions subbox"><div><b>Monthly payments are set up</b>${p.subscription.last_paid ? ` <span class="muted">(last payment ${p.subscription.last_amount ? $$(p.subscription.last_amount) + " on " : ""}${esc(dateFmt(p.subscription.last_paid))})</span>` : p.subscription.amount ? ` <span class="muted">(${$$(p.subscription.amount)} a month)</span>` : ""}</div>
+     ${p.subscription.status === "Past due" ? `<p class="muted" style="margin:6px 0 0">Your last payment didn't go through. Updating your payment method lets us try again.</p>` : `<p class="muted" style="margin:6px 0 0">${p.pay.length ? "Your monthly payments continue automatically. The down payment below is still owed." : "Your payments continue automatically. You don't need to pay anything here."}</p>`}
+     ${p.subscription.can_update ? `<div class="row"><button type="button" class="alt cardBtn">Update payment method</button></div><div class="err" role="alert"></div>` : ""}</div>` : ""}
+   <div class="actions" ${p.pay.length || p.plan ? "" : "hidden"}></div>
+   <details><summary>Payment schedule and history</summary>${sched}${hist}</details>`;
+  const box = el.querySelector(".actions:not(.subbox)");
+  if (!box.hidden) buildActions(box, p, i);
+  const cb = el.querySelector(".cardBtn");
+  if (cb) cb.addEventListener("click", async () => {
+    const err = cb.closest(".subbox").querySelector(".err"); err.textContent = ""; cb.disabled = true; cb.textContent = "Opening...";
+    try { location.href = (await api("/api/checkout", { ...CRED, key: p.key, kind: "card" })).url; }
+    catch (e) { err.textContent = e.message; cb.disabled = false; cb.textContent = "Update payment method"; }
+  });
+  return el;
+}
+
+function buildActions(box, p, i) {
+  const name = "m" + i, mode = "w" + i;
+  const o = p.pay[0], pl = p.plan;
+  const mk = () => (!p.multi ? "ach" : box.querySelector(`input[name=${name}]:checked`).value);
+  const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 >> 3) ^ 1 && n % 10 < 4 ? n % 10 : 0]);
+  const plusMonths = (iso, n) => { const [y, m, d] = iso.split("-").map(Number), t = m - 1 + n; return new Date(Date.UTC(y + Math.floor(t / 12), t % 12, d, 12)).toISOString().slice(0, 10); };
+
+  // 1) what do you want to do?  2) how will you pay?  3) the details for that choice.
+  const choices = [o && ["now", "Make a payment now"], pl && ["monthly", "Set up monthly payments"]].filter(Boolean);
+  box.innerHTML = `
+   ${choices.length > 1 ? `<div class="muted">What would you like to do?</div>${choices.map(([v, t], k) => `<label class="opt"><input type="radio" name="${mode}" value="${v}" ${k ? "" : "checked"}> ${t}</label>`).join("")}` : ""}
+   ${p.multi ? `<div class="muted" style="margin-top:10px">How would you like to pay?</div>
+     <label class="opt"><input type="radio" name="${name}" value="ach" checked> Bank account (lowest cost)</label>
+     <label class="opt"><input type="radio" name="${name}" value="card"> Credit or debit card (includes processing fee)</label>` : ""}
+   ${o ? `<div class="panel" data-p="now" style="margin-top:12px">
+     <div><b>${esc(o.label)}</b>: <span class="due"></span></div>
+     <label style="margin:10px 0 4px">Amount to pay <input type="number" class="amount" step="0.01" min="0" inputmode="decimal" style="width:150px;height:40px;margin-left:6px"></label>
+     <div class="muted amountNote"></div>
+     <div class="row"><button data-k="balance"></button></div></div>` : ""}
+   ${pl ? `<div class="panel" data-p="monthly" style="margin-top:12px">
+     <div><b>Due today:</b> <span class="today"></span></div>
+     ${pl.now_count || pl.down ? `<label style="margin:10px 0 4px">Amount to pay today <input type="number" class="nowAmount" step="0.01" min="0" inputmode="decimal" style="width:150px;height:40px;margin-left:6px"></label>
+     <div class="muted nowNote"></div>` : ""}
+     <div><b>Monthly:</b> <span class="monthly"></span> a month for ${pl.months} month${pl.months > 1 ? "s" : ""}, stopping on its own after the last one</div>
+     <div class="muted payoff"></div>
+     <label style="margin:10px 0 4px">First monthly payment on <input type="date" class="start" value="${pl.first}" min="${pl.earliest}" max="${pl.latest}" style="width:auto;height:40px;margin-left:6px"></label>
+     <div class="muted startNote"></div>
+     <div class="row"><button data-k="plan">Start monthly payments</button></div></div>` : ""}
+   <div class="err" role="alert"></div>`;
+
+  const q = (s) => box.querySelector(s);
+  const chosen = () => (choices.length > 1 ? q(`input[name=${mode}]:checked`).value : choices[0][0]);
+  const amountEl = q(".amount"), startEl = q(".start"), nowEl = q(".nowAmount");
+  let nowTouched = false;
+  let touched = false;
+  const amountOk = () => { const v = Number(amountEl.value); return amountEl.value !== "" && v >= o.min && v <= o.max[mk()] && Math.abs(v * 100 - Math.round(v * 100)) < 1e-6; };
+  const paint = () => {
+    const m = mk();
+    box.querySelectorAll(".panel").forEach((x) => (x.hidden = x.dataset.p !== chosen()));
+    if (o) {
+      q(".due").textContent = $$(o.amounts[m]);
+      if (!touched) amountEl.value = o.amounts[m];
+      const ok = amountOk(), v = Number(amountEl.value);
+      q(".amountNote").textContent = !ok ? `Enter an amount from ${$$(o.min)} to ${$$(o.max[m])} (the most you owe for the season).`
+        : v < o.amounts[m] - 0.005 ? "That's less than what's due, so a balance will remain." : v > o.amounts[m] + 0.005 ? "That's more than what's due. The extra goes toward future installments." : "";
+      const b = q('button[data-k="balance"]'); b.disabled = !ok; b.textContent = ok ? "Pay " + $$(v) : "Pay";
+    }
+    if (pl) {
+      q(".today").textContent = pl.now[m] > 0 ? `${$$(pl.now[m])} (${[pl.down && "down payment", pl.now_count && `${pl.now_count} past-due installment${pl.now_count > 1 ? "s" : ""}`].filter(Boolean).join(" + ")})` : "nothing. You're caught up.";
+      q(".monthly").textContent = $$(pl.monthly[m]);
+      q(".payoff").textContent = `That's ${pl.total_payments} payment${pl.total_payments > 1 ? "s" : ""} in all (${$$(pl.payoff[m])}), which pays off the rest of the season.`;
+      const ok = startEl.value >= pl.earliest && startEl.value <= pl.latest && Number(startEl.value.slice(8)) <= 28;
+      q(".startNote").textContent = ok ? `Charged on the ${ord(Number(startEl.value.slice(8)))} of each month: ${dateFmt(startEl.value)} through ${dateFmt(plusMonths(startEl.value, pl.months - 1))}.`
+        : `Choose a date from ${dateFmt(pl.earliest)} to ${dateFmt(pl.latest)}, on day 1 to 28 of a month.`;
+      let nowOk = true;
+      if (nowEl) {
+        if (!nowTouched) nowEl.value = pl.now[m];
+        const v = Number(nowEl.value), mn = Math.min(25, pl.now[m]);
+        nowOk = nowEl.value !== "" && v >= 0 && v <= pl.now[m] && (v === 0 || v >= mn) && Math.abs(v * 100 - Math.round(v * 100)) < 1e-6;
+        q(".nowNote").textContent = !nowOk ? `Enter $0, or an amount from ${$$(mn)} to ${$$(pl.now[m])}.` : v < pl.now[m] - 0.005 ? "That's less than the catch-up amount, so that part of your balance will remain past due. Your monthly payments still start on the date below." : "";
+      }
+      q('button[data-k="plan"]').disabled = !ok || !nowOk;
+    }
+  };
+  box.querySelectorAll("input[type=radio]").forEach((r) => r.addEventListener("change", paint));
+  if (amountEl) amountEl.addEventListener("input", () => { touched = true; paint(); });
+  if (nowEl) nowEl.addEventListener("input", () => { nowTouched = true; paint(); });
+  if (startEl) startEl.addEventListener("input", paint);
+  paint();
+
+  box.querySelectorAll("button[data-k]").forEach((b) => b.addEventListener("click", async () => {
+    const kind = b.dataset.k, err = q(".err"), label = b.textContent;
+    err.textContent = "";
+    box.querySelectorAll("button").forEach((x) => (x.disabled = true));
+    b.textContent = "Opening secure checkout...";
+    try {
+      const r = await api("/api/checkout", { ...CRED, key: p.key, kind, option: o && o.id, method: p.multi ? mk() : "any",
+        amount: kind === "balance" ? amountEl.value : undefined, start: kind === "plan" ? startEl.value : undefined, now_amount: kind === "plan" && nowEl ? nowEl.value : undefined });
+      location.href = r.url;
+    } catch (e) {
+      err.textContent = e.message; b.textContent = label; paint();
+    }
+  }));
+}
+</script>
+</body>
+</html>

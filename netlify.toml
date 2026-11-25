@@ -1,0 +1,20 @@
+[build]
+  publish = "public"
+
+[functions]
+  directory = "netlify/functions"
+
+# Pages: don't index, always revalidate (but allow the back button to restore them).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-cache"
+    Referrer-Policy = "no-referrer"
+    X-Frame-Options = "DENY"
+
+# Account data is never cached.
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"
